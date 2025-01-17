@@ -56,6 +56,7 @@ def update_patterns():
             if current_time - last_toggle_times[direction] >= 1 / (2 * freq):
                 toggle_pattern(direction)
                 last_toggle_times[direction] = current_time
+        time.sleep(0.005)  # Reduce CPU usage
 
 # Draw red cross
 def draw_red_cross():
@@ -88,7 +89,8 @@ def draw_checkerboard(center, radius, start_white):
         points = [
             center,
             (center[0] + radius * math.cos(start_angle), center[1] + radius * math.sin(start_angle)),
-            (center[0] + radius * math.cos(end_angle), center[1] + radius * math.sin(end_angle))
+            (center[0] + radius * math.cos(end_angle), center[1] + radius * math.sin(end_angle)),
+            center  # Ensure closure of the segment
         ]
 
         # Draw the wedge
@@ -98,7 +100,7 @@ def draw_checkerboard(center, radius, start_white):
 shapes = ["red_cross", "up", "right", "down", "left"]
 current_shape_index = 0
 
-# Auto-switch
+# Auto-switch feature
 auto_switch = False
 switch_duration = 60  # Duration in seconds for auto-switch
 last_switch_time = time.perf_counter()
@@ -120,6 +122,8 @@ try:
                 if event.key == pygame.K_SPACE:
                     # Switch to the next shape
                     current_shape_index = (current_shape_index + 1) % len(shapes)
+                elif event.key == pygame.K_a:  # Press 'A' to toggle auto-switch
+                    auto_switch = not auto_switch
 
         # Auto-switch logic
         if auto_switch and (current_time - last_switch_time >= switch_duration):
