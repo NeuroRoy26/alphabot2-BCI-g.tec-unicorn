@@ -55,6 +55,6 @@ A set of flickering checkerboard patterns is generated using a Python script, [`
 ├── record_realtime_model.slx    # Simulink model for EEG data processing
 ├── README.md                    # Project documentation
 ├── udp.py                       # Using UDP on python script (requires Unicorn Python API )
-└── offline_model.slx            # For using pre-recorded eeg data 
+└── offline_model.slx            # For using pre-recorded eeg data in Simulink 
 ```
 
