@@ -51,8 +51,9 @@ A set of flickering checkerboard patterns is generated using a Python script, [`
 
 ## File Structure
 ```
-├── ssvep_bci.py                 # Python script for generating SSVEP stimuli
 ├── README.md                    # Project documentation
-├── udp.py                       # Using UDP on python script (requires Unicorn Python API )
+├── ssvep_generator.py           # Python script for generating SSVEP stimuli
+├── ssvep_gen_MATLAB.mat         # MATLAB script for generating SSVEP stimuli
+├── udp.py                       # Python script for UDP
 ```
 
