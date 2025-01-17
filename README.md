@@ -28,7 +28,7 @@ A set of flickering checkerboard patterns is generated using a Python script, [`
 
 ### Software & Libraries:
 - Python (`pygame`, `numpy`, `scipy.signal`, `socket`)
-- Unicorn Hyybrid Suite software (Available from g.Tec website)
+- Unicorn Hybrid Suite software (Available from g.Tec website)
 - Unicorn Hyrbid Suite LSL API (Available from the software bundle, Guide: https://github.com/unicorn-bi/Unicorn-Network-Interfaces-Hybrid-Black/blob/main/LSL/unicorn-lsl-interface.md)
 - Built LabStreamingLayer (LSL) framework (for MATLAB) for the Unicorn software (Available here: https://github.com/labstreaminglayer/liblsl-Matlab.git)
 - MATLAB & Simulink (`DSP System Toolbox`, `Signal Processing Toolbox`, `Simulink Real-Time`)
