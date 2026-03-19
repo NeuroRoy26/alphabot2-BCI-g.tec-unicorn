@@ -1,4 +1,4 @@
-# Real-time BCI Control of Waveshare Alphabot2-Pi using g.Tec Unicorn Hybrid EEG Headset
+# Real-time BCI Control for Pi-enabled-rover via EEG Headset
 
 This project implements a real-time Brain-Computer Interface (BCI) to control the **Waveshare Alphabot2-Pi** using **Steady-State Visually-Evoked Potential (SSVEP)** patterns. The system utilizes an **8-channel g.Tec Unicorn Hybrid EEG headset** to record brain activity, which is then transmitted via a **UDP port** to a **Raspberry Pi-enabled Waveshare Alphabot2 robot** for processing and control.
 
