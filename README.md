@@ -57,3 +57,4 @@ A set of flickering checkerboard patterns is generated using a Python script, [`
 ├── udp.py                       # Python script for UDP
 ```
 
+This work was achieved because of the support from Systems Neuroscience & Neurotechnology Unit, HTW Saar.
