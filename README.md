@@ -5,18 +5,18 @@ This project implements a real-time Brain-Computer Interface (BCI) to control th
 ## How It Works
 
 ### 1. SSVEP Stimuli Generation
-A set of flickering checkerboard patterns is generated using a Python script, [`ssvep_bci.py`](ssvep_bci.py), which leverages python package to:
+A set of flickering checkerboard patterns is generated using a Python script, `ssvep_generator.py`, to:
 - Create flickering visual stimuli at specific frequencies.
-- **Lock** the display monitor's frames per second (FPS) to maintain precise stimulus frequencies.
+- Run stimuli in a frame-locked mode (display-limited) for improved timing stability.
 
 ### 2. EEG Signal Acquisition
 - The **occipital region** of the brain responds to the flickering stimuli with a corresponding harmonic frequency.
 - This signal is captured using the **g.Tec Unicorn Hybrid EEG headset** (sampling rate: **250 Hz**).
-- The EEG data is synchronized via the **LabStreamingLayer (LSL) framework** and recorded using **Simulink**.
+- The EEG data can be synchronized via the **LabStreamingLayer (LSL) framework** and recorded using **Simulink**.
 
 ### 3. Signal Processing & Robot Control
 - The EEG signals are recorded and processed in two ways: 1) Offline processing to get an idea of how the data looks like. 2) Online processing to utilize the data in real-time.
-- Frequency analysis (can be changed to Power Spectral Density or Welsh Periodogram for better results) to identify the dominant frequency corresponding to the visual stimulus.
+- Frequency analysis (can be changed to Power Spectral Density or Welch Periodogram for better results) to identify the dominant frequency corresponding to the visual stimulus.
 - For real-time, processed signal is transmitted via a **UDP socket** to the Raspberry Pi controlling the **Waveshare Alphabot2**.
 - Based on the detected frequency, appropriate movement commands are sent to the robot.
 
@@ -27,34 +27,40 @@ A set of flickering checkerboard patterns is generated using a Python script, [`
 - Waveshare Alphabot2-Pi (Raspberry-Pi enabled)
 
 ### Software & Libraries:
-- Python (`pygame`, `numpy`, `scipy.signal`, `socket`)
+- Python (see `requirements.txt`)
 - Unicorn Hybrid Suite software (Available from g.Tec website)
-- Unicorn Hyrbid Suite LSL API (Available from the software bundle, Guide: https://github.com/unicorn-bi/Unicorn-Network-Interfaces-Hybrid-Black/blob/main/LSL/unicorn-lsl-interface.md)
-- Built LabStreamingLayer (LSL) framework (for MATLAB) for the Unicorn software (Available here: https://github.com/labstreaminglayer/liblsl-Matlab.git)
+- Unicorn Hybrid Suite LSL API (Available from the software bundle)
+- LabStreamingLayer (LSL) for MATLAB (Available here: https://github.com/labstreaminglayer/liblsl-Matlab.git)
 - MATLAB & Simulink (`DSP System Toolbox`, `Signal Processing Toolbox`, `Simulink Real-Time`)
-- Alternatively, Unicorn UDP interface can be used. **(NOT USED IN THIS REPOSITORY)** (Guide on how to use it: https://github.com/unicorn-bi/Unicorn-Network-Interfaces-Hybrid-Black/blob/main/UDP/unicorn-udp-interface.md)
+
+## Getting Started (Stimulus Only)
+
+```bash
+python ssvep_generator.py --fullscreen --fps 60
+```
+
+Controls:
+- `SPACE`: cycle target (fixation, up, right, down, left)
+- `A`: toggle auto-switch
+- `F`: toggle fullscreen
+- `ESC`: quit
 
 ## Getting Started (For Real-Time Processing)
 
-1. Configure the **SSVEP stimulus generation script** and run:
-   ```bash
-   python ssvep_bci.py
-   ```
-
+1. Run the SSVEP stimulus script (above).
 2. Ensure the **g.Tec Unicorn Headset** is properly calibrated and connected using the software suite.
-
 3. Start Simulink and open the model file **`record_realtime_model.slx`** for signal acquisition (real-time processing).
-
+   - **Note:** `record_realtime_model.slx` is not included in this repository.
 4. Configure the UDP port and the MATLAB Function block.
-  
 5. Run the Simulink file and the subject should focus on one of the stimulus frequency to observe the **Alphabot2 responding** to SSVEP-based commands.
 
 ## File Structure
 ```
 ├── README.md                    # Project documentation
 ├── ssvep_generator.py           # Python script for generating SSVEP stimuli
-├── ssvep_gen_MATLAB.mat         # MATLAB script for generating SSVEP stimuli
+├── ssvep_gen_MATLAB.m           # MATLAB script for offline STFT visualization
 ├── udp.py                       # Python script for UDP
+├── requirements.txt             # Python dependencies
 ```
 
 This work was achieved because of the support from Systems Neuroscience & Neurotechnology Unit, HTW Saar.
