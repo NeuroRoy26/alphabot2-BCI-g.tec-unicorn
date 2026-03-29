@@ -1,6 +1,6 @@
-# Real-time BCI Control for Pi-enabled-rover via EEG Headset
+# BCI Pipeline to control Raspberry Pi in real-time
 
-This project implements a real-time Brain-Computer Interface (BCI) to control the **Waveshare Alphabot2-Pi** using **Steady-State Visually-Evoked Potential (SSVEP)** patterns. The system utilizes an **8-channel g.Tec Unicorn Hybrid EEG headset** to record brain activity, which is then transmitted via a **UDP port** to a **Raspberry Pi-enabled Waveshare Alphabot2 robot** for processing and control.
+This project implements a real-time Brain-Computer Interface (BCI) to control the **Waveshare Alphabot2-Pi** using **Steady-State Visually-Evoked Potential (SSVEP)** patterns. The system utilizes an **8-channel g.Tec Unicorn Hybrid EEG headset** to record brain activity, which is then transmitted via a **UDP port** to a **RaspberryPi-integrated Waveshare Alphabot2 robot** for processing and control.
 
 ## How It Works
 
@@ -32,11 +32,11 @@ A set of flickering checkerboard patterns is generated using a Python script, [`
 - Unicorn Hyrbid Suite LSL API (Available from the software bundle, Guide: https://github.com/unicorn-bi/Unicorn-Network-Interfaces-Hybrid-Black/blob/main/LSL/unicorn-lsl-interface.md)
 - Built LabStreamingLayer (LSL) framework (for MATLAB) for the Unicorn software (Available here: https://github.com/labstreaminglayer/liblsl-Matlab.git)
 - MATLAB & Simulink (`DSP System Toolbox`, `Signal Processing Toolbox`, `Simulink Real-Time`)
-- Alternatively, Unicron UDP interface can also be used. **(NOT USED IN THIS REPOSITORY)** (Guide on how to use it: https://github.com/unicorn-bi/Unicorn-Network-Interfaces-Hybrid-Black/blob/main/UDP/unicorn-udp-interface.md)
+- Alternatively, Unicorn UDP interface can be used. **(NOT USED IN THIS REPOSITORY)** (Guide on how to use it: https://github.com/unicorn-bi/Unicorn-Network-Interfaces-Hybrid-Black/blob/main/UDP/unicorn-udp-interface.md)
 
 ## Getting Started (For Real-Time Processing)
 
-1. Run the **SSVEP stimulus generation script**:
+1. Configure the **SSVEP stimulus generation script** and run:
    ```bash
    python ssvep_bci.py
    ```
