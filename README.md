@@ -40,6 +40,11 @@ A set of flickering checkerboard patterns is generated using a Python script, [`
    ```bash
    python ssvep_bci.py
    ```
+Controls:
+- `SPACE`: cycle target (fixation, up, right, down, left)
+- `A`: toggle auto-switch
+- `F`: toggle fullscreen
+- `ESC`: quit
 
 2. Ensure the **g.Tec Unicorn Headset** is properly calibrated and connected using the software suite.
 
